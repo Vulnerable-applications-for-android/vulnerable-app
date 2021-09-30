@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_eye"
+            android:title="@string/menu_home" />
+    </group>
+
+    <group
+        android:id="@+id/group_rule"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_rule1"
+            android:icon="@drawable/ic_menu_pop_out"
+            android:title="@string/menu_rule1" />
+
+        <item
+            android:id="@+id/nav_rule2"
+            android:icon="@drawable/ic_menu_storage"
+            android:title="@string/menu_rule2" />
+
+        <item
+            android:id="@+id/nav_rule5"
+            android:icon="@drawable/ic_menu_communication"
+            android:title="@string/menu_rule5" />
+
+        <item
+            android:id="@+id/nav_rule8"
+            android:icon="@drawable/ic_menu_save"
+            android:title="@string/menu_rule8" />
+
+        <item
+            android:id="@+id/nav_rule11"
+            android:icon="@drawable/ic_menu_save"
+            android:title="@string/menu_rule11" />
+
+        <item
+            android:id="@+id/nav_rule12"
+            android:icon="@drawable/ic_menu_save"
+            android:title="@string/menu_rule12" />
+
+        <item
+            android:id="@+id/nav_rule17"
+            android:icon="@drawable/ic_menu_storage"
+            android:title="@string/menu_rule17" />
+
+        <item
+            android:id="@+id/nav_rule18"
+            android:icon="@drawable/ic_menu_pop_out"
+            android:title="@string/menu_rule18" />
+
+        <item
+            android:id="@+id/nav_rule19"
+            android:icon="@drawable/ic_menu_communication"
+            android:title="@string/menu_rule19" />
+
+        <item
+            android:id="@+id/nav_rule21"
+            android:icon="@drawable/ic_menu_mail"
+            android:title="@string/menu_rule21" />
+
+        <item
+            android:id="@+id/nav_rule25"
+            android:icon="@drawable/ic_menu_communication"
+            android:title="@string/menu_rule25" />
+
+        <item
+            android:id="@+id/nav_rule26"
+            android:icon="@drawable/ic_menu_communication"
+            android:title="@string/menu_rule26" />
+
+        <item
+            android:id="@+id/nav_rule28"
+            android:icon="@drawable/ic_menu_communication"
+            android:title="@string/menu_rule28" />
+
+    </group>
+</menu>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.android.thesis.vulnerableapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+<!--        <action-->
+<!--            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"-->
+<!--            app:destination="@id/nav_home_second" />-->
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_home_second"-->
+<!--        android:name="com.example.android.thesis.vulnerableapp.ui.home.HomeSecondFragment"-->
+<!--        android:label="@string/home_second"-->
+<!--        tools:layout="@layout/fragment_home_second">-->
+<!--        <action-->
+<!--            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"-->
+<!--            app:destination="@id/nav_home" />-->
+
+<!--        <argument-->
+<!--            android:name="myArg"-->
+<!--            app:argType="string" />-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/nav_rule1"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule1.Rule1Fragment"
+        android:label="@string/menu_rule1"
+        tools:layout="@layout/fragment_rule1" />
+
+    <fragment
+        android:id="@+id/nav_rule2"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule2.Rule2Fragment"
+        android:label="@string/menu_rule2"
+        tools:layout="@layout/fragment_rule2" />
+
+    <fragment
+        android:id="@+id/nav_rule5"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule5.Rule5Fragment"
+        android:label="@string/menu_rule5"
+        tools:layout="@layout/fragment_rule5" />
+
+    <fragment
+        android:id="@+id/nav_rule8"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule8.Rule8Fragment"
+        android:label="@string/menu_rule8"
+        tools:layout="@layout/fragment_rule8" />
+
+    <fragment
+        android:id="@+id/nav_rule11"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule11.Rule11Fragment"
+        android:label="@string/menu_rule11"
+        tools:layout="@layout/fragment_rule11" />
+
+    <fragment
+        android:id="@+id/nav_rule12"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule12.Rule12Fragment"
+        android:label="@string/menu_rule12"
+        tools:layout="@layout/fragment_rule12" />
+
+    <fragment
+        android:id="@+id/nav_rule17"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule17.Rule17Fragment"
+        android:label="@string/menu_rule17"
+        tools:layout="@layout/fragment_rule17" />
+
+    <fragment
+        android:id="@+id/nav_rule18"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule18.Rule18Fragment"
+        android:label="@string/menu_rule18"
+        tools:layout="@layout/fragment_rule18" />
+
+    <fragment
+        android:id="@+id/nav_rule19"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule19.Rule19Fragment"
+        android:label="@string/menu_rule19"
+        tools:layout="@layout/fragment_rule19" />
+
+    <fragment
+        android:id="@+id/nav_rule21"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule21.Rule21Fragment"
+        android:label="@string/menu_rule21"
+        tools:layout="@layout/fragment_rule21" />
+
+    <fragment
+        android:id="@+id/nav_rule25"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule25.Rule25Fragment"
+        android:label="@string/menu_rule25"
+        tools:layout="@layout/fragment_rule25" />
+
+    <fragment
+        android:id="@+id/nav_rule26"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule26.Rule26Fragment"
+        android:label="@string/menu_rule26"
+        tools:layout="@layout/fragment_rule26" />
+
+    <fragment
+        android:id="@+id/nav_rule28"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule28.Rule28Fragment"
+        android:label="@string/menu_rule28"
+        tools:layout="@layout/fragment_rule28" />
+</navigation>

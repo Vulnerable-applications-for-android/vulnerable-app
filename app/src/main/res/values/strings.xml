@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Vulnerable App</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Vulnerable App</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_about">About</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_rule1">R1: Show an app chooser</string>
+    <string name="rule1_description">If there is more than one app registered for the same implicit Intent, the user should be asked to choose which app to launch through an app chooser</string>
+    <string name="menu_rule2">R2: Content Provider access control</string>
+    <string name="rule2_description">1. Two apps, under the control of the same developer and designed to share data, should declare signature-based permissions to protect their Content Provider\n2. The exported attribute of an app Content Provider should be set to false to prevent any data sharing</string>
+    <string name="menu_rule5">R5: Use SSL traffic</string>
+    <string name="rule5_description">Use SSL Traffic and manage unknown certificates</string>
+    <string name="menu_rule8">R8: Store private data within internal storage</string>
+    <string name="rule8_description">Apps should save their private data in the internal private app storage, which is sandboxed per app</string>
+    <string name="menu_rule11">R11: Store only non-sensitive data in cache files</string>
+    <string name="rule11_description">To provide quicker access to non-sensitive app data, store it in the device’s cache. For caches larger than 1 MB in size, use getExternalCacheDir(); otherwise, use getCacheDir(). Each method provides you with the File object that contains your app’s cached data</string>
+    <string name="menu_rule12">R12: Use Shared Preferences with MODE_PRIVATE</string>
+    <string name="rule12_description">Apps should use the SharedPreferences only in MODE_PRIVATE to prevent other apps from accessing them</string>
+    <string name="menu_rule17">R17: Avoid SQL injections</string>
+    <string name="rule17_description">When accessing a Content Provider, an app should use the parameterized methods such as query(), update(), insert(), and delete() to avoid SQL injections from untrusted resources</string>
+    <string name="menu_rule18">R18: Prefer explicit intents</string>
+    <string name="rule18_description">Apps should start an Activity, a Service or a Broadcast Receiver with an Explicit Intent and not an Implicit one</string>
+    <string name="menu_rule19">R19: Use IP networking</string>
+    <string name="rule19_description">Apps should never use localhost, 127.0.0.1 or binding to INADDR_ANY to handle sensitive IPC communication. Some applications use localhost network ports for handling sensitive IPC. You should not use this approach because these interfaces are accessible by other applications on the device.</string>
+    <string name="menu_rule21">R21: Use telephony networking</string>
+    <string name="rule21_description">Apps should avoid sending sensitive data through the SMS protocol, since it is not encrypted. SMS is neither encrypted nor strongly authenticated, SMS messages are transmitted as broadcast intents, so they may be read or captured by other applications that have the READ_SMS permission.</string>
+    <string name="vulnerability_rule21">"This app requests the READ_SMS, REQUEST_SMS, and SEND_SMS permissions. A normal app which requests this permission will probably read or send SMSes. This makes it vulnerable."</string>
+    <string name="menu_rule25">R25: Common problems with Hostname Verification</string>
+    <string name="rule25_description">Caution: replacing HostnameVerifier can be very dangerous if the other virtual host is not under your control, because a man-in-the-middle attack could direct traffic to another server without your knowledge</string>
+    <string name="menu_rule26">R26: Warnings about using SSLSocket directly</string>
+    <string name="rule26_description">Caution: SSLSocket does not perform hostname verification. It is up to your app to do its own hostname verification, preferably by calling getDefaultHostnameVerifier() with the expected hostname. Further beware that HostnameVerifier.verify() doesn’t throw an exception on error but instead returns a boolean result that you must explicitly check </string>
+    <string name="menu_rule28">R28: Opt-out of cleartext traffic</string>
+    <string name="rule28_description">Applications intending to connect to destinations using only secure connections can opt-out of supporting cleartext to those destinations. This option helps prevent accidental regressions in apps due to changes in URLs provided by external sources backend servers.</string>
+
+    <!--    <string name="home_second">Home Second</string>-->
+</resources>

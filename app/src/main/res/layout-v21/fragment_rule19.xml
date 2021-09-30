@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.rule19.Rule19Fragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_rule19_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="start"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rule19_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:gravity="center_horizontal"
+            android:text="@string/menu_rule19"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold|italic" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/description_rule19"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginLeft="20dp"-->
+        <!--            android:gravity="fill_horizontal"-->
+        <!--            android:text="@string/rule19_description"-->
+        <!--            android:textSize="20sp" />-->
+
+        <LinearLayout
+            android:id="@+id/rule19_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="25dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <EditText
+                android:id = "@+id/etIP"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:hint = "IP-Address"
+                android:inputType = "text" />
+            <EditText
+                android:id = "@+id/etPort"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_below = "@+id/etIP"
+                android:hint = "Port No"
+                android:inputType = "number" />
+            <Button
+                android:id = "@+id/btnConnect"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_below = "@+id/etPort"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/White"
+                android:layout_gravity = "center"
+                android:layout_marginTop = "16dp"
+                android:text = "Connect To Server" />
+            <TextView
+                android:id = "@+id/tvMessages"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_above = "@+id/etMessage"
+                android:layout_below = "@+id/btnConnect"
+                android:inputType = "textMultiLine"
+                android:textAppearance = "@style/Base.TextAppearance.AppCompat.Medium" />
+            <EditText
+                android:id = "@+id/etMessage"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_above = "@+id/btnSend"
+                android:hint = "Enter Message"
+                android:inputType = "text" />
+            <Button
+                android:id = "@+id/btnSend"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:layout_alignParentBottom = "true"
+                android:textColor="@color/White"
+                android:background="@color/colorPrimary"
+                android:text = "SEND" />
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
