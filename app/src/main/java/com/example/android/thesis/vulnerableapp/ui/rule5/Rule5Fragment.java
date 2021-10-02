@@ -1,44 +1,28 @@
 package com.example.android.thesis.vulnerableapp.ui.rule5;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.NetworkOnMainThreadException;
-import android.os.StrictMode;
-import android.support.annotation.RequiresApi;
-import android.util.Log;
+
+import androidx.annotation.RequiresApi;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProviders;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
 import com.example.android.thesis.vulnerableapp.R;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.BitSet;
-import java.util.Objects;
-import java.util.Random;
-import java.util.concurrent.ExecutionException;
 
-import javax.net.SocketFactory;
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLHandshakeException;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
 
 public class Rule5Fragment extends Fragment {
         private Rule5ViewModel rule5ViewModel;

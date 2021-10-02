@@ -1,8 +1,8 @@
 package com.example.android.thesis.vulnerableapp.ui.rule11;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 public class Rule11ViewModel extends ViewModel {
 
