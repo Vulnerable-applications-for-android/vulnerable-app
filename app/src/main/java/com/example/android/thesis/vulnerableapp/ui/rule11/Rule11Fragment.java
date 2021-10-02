@@ -3,13 +3,15 @@ package com.example.android.thesis.vulnerableapp.ui.rule11;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProviders;
+
+import androidx.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +22,6 @@ import android.widget.Toast;
 import com.example.android.thesis.vulnerableapp.R;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -29,7 +30,8 @@ public class Rule11Fragment extends Fragment {
     private Rule11ViewModel rule11ViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rule11ViewModel = ViewModelProviders.of(this).get(Rule11ViewModel.class);
+//        rule11ViewModel = ViewModelProviders.of(this).get(Rule11ViewModel.class);
+        rule11ViewModel = new ViewModelProvider(this).get(Rule11ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule11, container, false);
 
         final Context context = this.getContext();
@@ -37,13 +39,18 @@ public class Rule11Fragment extends Fragment {
 
         // Hide keyboard when touching somewhere else
         root.findViewById(R.id.linearLayout_rule11_container).setOnTouchListener((v, event) -> {
-            InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+            if (event.getAction() == MotionEvent.ACTION_UP) {   // when the finger is over the screen
+                v.performClick();
+                assert context != null;
+                assert activity != null;
+                InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+            }
             return true;
         });
 
-        final EditText editText = (EditText) root.findViewById(R.id.et_rule11);
-        Button mButton = (Button) root.findViewById(R.id.button_rule11);
+        final EditText editText = root.findViewById(R.id.et_rule11);
+        Button mButton = root.findViewById(R.id.button_rule11);
 
         mButton.setOnClickListener(v -> {
             assert context != null;
@@ -67,7 +74,7 @@ public class Rule11Fragment extends Fragment {
                 secret_dir.mkdir();
                 nascosto.createNewFile();
                 fw = new FileWriter(nascosto.getAbsoluteFile());
-                fw.write("ciaoooooooo");
+                fw.write("ciao");
                 fw.close();
             } catch (IOException e) {
                 Toast.makeText(context, "IOException" + e.getMessage(), Toast.LENGTH_SHORT).show();
