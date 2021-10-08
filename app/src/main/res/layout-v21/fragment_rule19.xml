@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,7 +37,8 @@
         <!--            android:text="@string/rule19_description"-->
         <!--            android:textSize="20sp" />-->
 
-        <LinearLayout
+<!--        Before, here there was LinearLayout-->
+        <RelativeLayout
             android:id="@+id/rule19_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,14 +53,14 @@
                 android:id = "@+id/etIP"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:hint = "IP-Address"
+                android:hint = "@string/ip_address"
                 android:inputType = "text" />
             <EditText
                 android:id = "@+id/etPort"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:layout_below = "@+id/etIP"
-                android:hint = "Port No"
+                android:hint = "@string/port_no"
                 android:inputType = "number" />
             <Button
                 android:id = "@+id/btnConnect"
@@ -71,7 +71,7 @@
                 android:textColor="@color/White"
                 android:layout_gravity = "center"
                 android:layout_marginTop = "16dp"
-                android:text = "Connect To Server" />
+                android:text = "@string/connect_to_server" />
             <TextView
                 android:id = "@+id/tvMessages"
                 android:layout_width = "match_parent"
@@ -85,7 +85,7 @@
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:layout_above = "@+id/btnSend"
-                android:hint = "Enter Message"
+                android:hint = "@string/enter_message"
                 android:inputType = "text" />
             <Button
                 android:id = "@+id/btnSend"
@@ -94,8 +94,8 @@
                 android:layout_alignParentBottom = "true"
                 android:textColor="@color/White"
                 android:background="@color/colorPrimary"
-                android:text = "SEND" />
-        </LinearLayout>
+                android:text = "@string/send" />
+        </RelativeLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
