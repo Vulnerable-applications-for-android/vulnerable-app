@@ -22,7 +22,6 @@
 
 # Executables
 *.exe
-*.out
 *.app
 *.i*86
 *.x86_64
@@ -44,11 +43,9 @@
 *.blg
 
 # IntelliJ Idea
-*.iml
 *.ipr
 .idea/
 .classpath
-.project
 .settings
 .metadata
 
@@ -67,7 +64,6 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
 /build
 /captures
 .externalNativeBuild
@@ -100,9 +96,6 @@ tomcat-logs/
 
 # Balsamiq Mockup
 *.bmpr
-
-# target folder
-target/
 
 # Jupyter notebooks
 .ipynb_checkpoints
