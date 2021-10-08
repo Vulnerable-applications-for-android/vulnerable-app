@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
@@ -53,23 +54,23 @@ public class Rule12Fragment extends Fragment {
 //        Log.i("Stored Secret Pref", sharedPreferences.getString("secret", "ERROR"));
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        rule12ViewModel =
-                ViewModelProviders.of(this).get(Rule12ViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rule12ViewModel = new ViewModelProvider(this).get(Rule12ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule12, container, false);
 
         final Context context = this.getContext();
         final Activity activity = getActivity();
 
         // Hide keyboard when touching somewhere else
-        root.findViewById(R.id.linearLayout_rule12_container).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+        root.findViewById(R.id.linearLayout_rule12_container).setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {   // when the finger is over the screen
+                v.performClick();
+                assert context != null;
+                assert activity != null;
                 InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-                return true;
             }
+            return true;
         });
 
         final EditText editText = (EditText) root.findViewById(R.id.et_rule12);

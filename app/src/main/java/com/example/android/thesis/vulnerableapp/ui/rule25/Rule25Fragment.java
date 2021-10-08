@@ -1,5 +1,6 @@
 package com.example.android.thesis.vulnerableapp.ui.rule25;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -73,7 +74,7 @@ public class Rule25Fragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rule25ViewModel = ViewModelProviders.of(this).get(Rule25ViewModel.class);
+        rule25ViewModel = new ViewModelProvider(this).get(Rule25ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule25, container, false);
 
         Button button = root.findViewById(R.id.button_rule25);

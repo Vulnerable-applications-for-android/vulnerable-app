@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.android.thesis.vulnerableapp.R;
+import com.example.android.thesis.vulnerableapp.ui.rule17.Rule17ViewModel;
 
 public class Rule1Fragment extends Fragment {
 
@@ -30,19 +32,13 @@ public class Rule1Fragment extends Fragment {
         startActivity(intent);
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        rule1ViewModel =
-                ViewModelProviders.of(this).get(Rule1ViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rule1ViewModel = new ViewModelProvider(this).get(Rule1ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule1, container, false);
 
-        Button sendIntentButton = (Button) root.findViewById(R.id.button_rule1);
+        Button sendIntentButton = root.findViewById(R.id.button_rule1);
         sendIntentButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        sendIntent();
-                    }
-                }
+                view -> sendIntent()
         );
 
         return root;

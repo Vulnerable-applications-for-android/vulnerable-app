@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
@@ -132,19 +133,13 @@ public class Rule28Fragment extends Fragment {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        rule28ViewModel =
-                ViewModelProviders.of(this).get(Rule28ViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rule28ViewModel = new ViewModelProvider(this).get(Rule28ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule28, container, false);
 
-        Button button = (Button) root.findViewById(R.id.button_rule28);
+        Button button = root.findViewById(R.id.button_rule28);
         button.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        makeHttpRequest(root);
-                    }
-                }
+                view -> makeHttpRequest(root)
         );
 
         return root;

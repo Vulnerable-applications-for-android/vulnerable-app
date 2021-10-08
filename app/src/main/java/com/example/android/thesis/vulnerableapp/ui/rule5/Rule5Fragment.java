@@ -12,10 +12,12 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
 import com.example.android.thesis.vulnerableapp.R;
+import com.example.android.thesis.vulnerableapp.ui.rule17.Rule17ViewModel;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -69,7 +71,7 @@ public class Rule5Fragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rule5ViewModel = ViewModelProviders.of(this).get(Rule5ViewModel.class);
+        rule5ViewModel = new ViewModelProvider(this).get(Rule5ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule5, container, false);
 
         Button button = root.findViewById(R.id.button_rule5);

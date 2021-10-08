@@ -1,5 +1,6 @@
 package com.example.android.thesis.vulnerableapp.ui.rule19;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -36,7 +37,7 @@ public class Rule19Fragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rule19ViewModel = ViewModelProviders.of(this).get(Rule19ViewModel.class);
+        rule19ViewModel = new ViewModelProvider(this).get(Rule19ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule19, container, false);
 
         try {

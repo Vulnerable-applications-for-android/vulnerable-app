@@ -22,11 +22,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
 
 import com.example.android.thesis.vulnerableapp.R;
 import com.example.android.thesis.vulnerableapp.VulnerableProvider;
+import com.example.android.thesis.vulnerableapp.ui.rule17.Rule17ViewModel;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -34,74 +36,58 @@ public class Rule2Fragment extends Fragment {
 
     private Rule2ViewModel rule2ViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        rule2ViewModel =
-                ViewModelProviders.of(this).get(Rule2ViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rule2ViewModel = new ViewModelProvider(this).get(Rule2ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule2, container, false);
 
         final Context context = this.getContext();
         final Activity activity = getActivity();
 
         // Hide keyboard when touching somewhere else
-        root.findViewById(R.id.linearLayout_rule2_container).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
+        root.findViewById(R.id.linearLayout_rule2_container).setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {   // when the finger is over the screen
+                v.performClick();
+                assert context != null;
+                assert activity != null;
                 InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-                return true;
             }
+            return true;
         });
 
         // Add new secret to the content provider
-        final EditText editText = (EditText) root.findViewById(R.id.et_rule2);
-        Button mButton = (Button) root.findViewById(R.id.button_rule2);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    onAddSecretHandler(editText);
-                }
-                return false;
+        final EditText editText = root.findViewById(R.id.et_rule2);
+        Button mButton = root.findViewById(R.id.button_rule2);
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                onAddSecretHandler(editText);
             }
+            return false;
         });
+
         mButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        onAddSecretHandler(editText);
-                    }
-                }
+                view -> onAddSecretHandler(editText)
         );
 
         // HIDE query results
-        final Button hideButton = (Button) root.findViewById(R.id.button_hide_rule2);
+        final Button hideButton = root.findViewById(R.id.button_hide_rule2);
         hideButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        onHideHandler(root);
-                    }
-                }
+                view -> onHideHandler(root)
         );
 
         // Query the content provider
-        Button qButton = (Button) root.findViewById(R.id.query_button_rule2);
+        Button qButton = root.findViewById(R.id.query_button_rule2);
         qButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        onClickRetrieveSecrets(root);
-                        hideButton.setVisibility(View.VISIBLE);
-                    }
+                view -> {
+                    onClickRetrieveSecrets(root);
+                    hideButton.setVisibility(View.VISIBLE);
                 }
         );
 
         // Delete all secrets in the content provider
-        Button deleteButton = (Button) root.findViewById(R.id.delete_button_rule2);
+        Button deleteButton = root.findViewById(R.id.delete_button_rule2);
         deleteButton.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View view) {
-                        onDeleteHandler(root);
-                    }
-                }
+                view -> onDeleteHandler(root)
         );
 
         return root;
@@ -118,11 +104,11 @@ public class Rule2Fragment extends Fragment {
     }
 
     public void onHideHandler(View view) {
-        Button hideButton = (Button) view.findViewById(R.id.button_hide_rule2);
+        Button hideButton = view.findViewById(R.id.button_hide_rule2);
         hideButton.setVisibility(View.INVISIBLE);
-        TextView headerQuery = (TextView) view.findViewById(R.id.tv_rule2_query_header);
+        TextView headerQuery = view.findViewById(R.id.tv_rule2_query_header);
         headerQuery.setVisibility(View.INVISIBLE);
-        TextView queryResult = (TextView) view.findViewById(R.id.tv_query_result_rule2);
+        TextView queryResult = view.findViewById(R.id.tv_query_result_rule2);
         queryResult.setText("");
     }
 
@@ -178,8 +164,8 @@ public class Rule2Fragment extends Fragment {
         Cursor cursor = getContext().getContentResolver().query(secrets, projection, null, null, null);
 
         String output = "";
-        TextView queryOutput = (TextView) view.findViewById(R.id.tv_query_result_rule2);
-        TextView queryHeader = (TextView) view.findViewById(R.id.tv_rule2_query_header);
+        TextView queryOutput = view.findViewById(R.id.tv_query_result_rule2);
+        TextView queryHeader = view.findViewById(R.id.tv_rule2_query_header);
         queryHeader.setVisibility(View.VISIBLE);
 
         assert cursor != null;

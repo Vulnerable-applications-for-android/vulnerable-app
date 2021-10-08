@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.android.thesis.vulnerableapp.R;
@@ -24,7 +25,7 @@ public class Rule18Fragment extends Fragment {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rule18ViewModel = ViewModelProviders.of(this).get(Rule18ViewModel.class);
+        rule18ViewModel = new ViewModelProvider(this).get(Rule18ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule18, container, false);
 
         Button sendIntentButton = root.findViewById(R.id.button_rule18);
