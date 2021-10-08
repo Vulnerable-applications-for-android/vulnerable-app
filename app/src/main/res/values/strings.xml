@@ -35,6 +35,12 @@
     <string name="rule26_description">Caution: SSLSocket does not perform hostname verification. It is up to your app to do its own hostname verification, preferably by calling getDefaultHostnameVerifier() with the expected hostname. Further beware that HostnameVerifier.verify() doesn’t throw an exception on error but instead returns a boolean result that you must explicitly check </string>
     <string name="menu_rule28">R28: Opt-out of cleartext traffic</string>
     <string name="rule28_description">Applications intending to connect to destinations using only secure connections can opt-out of supporting cleartext to those destinations. This option helps prevent accidental regressions in apps due to changes in URLs provided by external sources backend servers.</string>
+    <string name="analogous_to_rule1">( Analogous to Rule1 )</string>
+    <string name="port_no">Port No</string>
+    <string name="ip_address">IP-Address</string>
+    <string name="connect_to_server">Connect To Server</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="send">SEND</string>
 
     <!--    <string name="home_second">Home Second</string>-->
 </resources>
