@@ -40,7 +40,7 @@ public class Rule8Fragment extends Fragment {
     private Rule8ViewModel rule8ViewModel;
 
     // Custom function when the user input is submitted
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)          // in teoria, se uso api < 19, questa app non dovrebbe funzionare
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void onSubmitHandler(EditText editText) {
         String secret = editText.getText().toString();      // content of the EditText
         if (secret.equals("")) {

@@ -49,7 +49,7 @@ public class Rule11Fragment extends Fragment {
             return true;
         });
 
-        final EditText editText = root.findViewById(R.id.et_rule11);
+        EditText editText = root.findViewById(R.id.et_rule11);
         Button mButton = root.findViewById(R.id.button_rule11);
 
         mButton.setOnClickListener(v -> {
@@ -65,20 +65,24 @@ public class Rule11Fragment extends Fragment {
 
             File secret_dir = new File(context.getExternalCacheDir().getAbsolutePath() + "/Segreta");
             File nascosto = new File(context.getExternalCacheDir().getAbsolutePath() + "/Segreta", "nascosto.txt");
-            FileWriter fw;
+            FileWriter fw1;
+            FileWriter fw2;
             try {
                 cacheFile.createNewFile();   // create the file (empty, if NOT exists) in the application (external) folder of the app
-                fw = new FileWriter(cacheFile.getAbsoluteFile());
-                fw.write(editText.getText().toString());            // write in the (external) cache
+                fw1 = new FileWriter(cacheFile.getAbsoluteFile());
+                System.out.println(editText.getText().toString());
+                fw1.write(editText.getText().toString());            // write in the (external) cache
+                fw1.close();
 
                 secret_dir.mkdir();
                 nascosto.createNewFile();
-                fw = new FileWriter(nascosto.getAbsoluteFile());
-                fw.write("ciao");
-                fw.close();
+                fw2 = new FileWriter(nascosto.getAbsoluteFile());
+                fw2.write("ciao");
+                fw2.close();
             } catch (IOException e) {
                 Toast.makeText(context, "IOException" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+            editText.setText("");       // clear editText
         });
 
         return root;
