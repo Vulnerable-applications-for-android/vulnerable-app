@@ -19,6 +19,7 @@ public class VulnerableProvider extends ContentProvider {
     static final String URL = "content://" + PROVIDER_NAME + "/secrets";
     public static final Uri CONTENT_URI = Uri.parse(URL);
 
+    // Those are the two columns of the table "secrets"
     public static final String _ID = "_id";
     public static final String SECRET = "secret";
 
@@ -70,16 +71,14 @@ public class VulnerableProvider extends ContentProvider {
     }
 
 
+    /**
+     * Create a writable database which will trigger its
+     * creation if it doesn't already exist.
+     */
     @Override
     public boolean onCreate() {
         Context context = getContext();
         DatabaseHelper dbHelper = new DatabaseHelper(context);
-
-        /**
-         * Create a write able database which will trigger its
-         * creation if it doesn't already exist.
-         */
-
         db = dbHelper.getWritableDatabase();
         return (db == null) ? false : true;
     }
@@ -106,7 +105,7 @@ public class VulnerableProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        // SECURE -> But it should be vulnerable!!
+////         SECURE -> But it should be vulnerable!!
 //        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 //        qb.setTables(SECRETS_TABLE_NAME);
 //
@@ -140,7 +139,7 @@ public class VulnerableProvider extends ContentProvider {
         // VULNERABLE
         Cursor cursor = null;
         switch (uriMatcher.match(uri)) {
-            case SECRETS:
+            case SECRETS:   // insert also 'selection' and 'selectionArgs' to perform a sql injection
                 cursor = db.query(false, SECRETS_TABLE_NAME, projection, null, null, null, null, sortOrder, null);
                 break;
 
@@ -213,7 +212,7 @@ public class VulnerableProvider extends ContentProvider {
                 return "vnd.android.cursor.dir/vnd.example.secrets";
 
             /**
-             * Get a particular student
+             * Get a particular secret
              */
             case SECRET_ID:
                 return "vnd.android.cursor.item/vnd.example.secrets";

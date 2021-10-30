@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,6 +31,9 @@ import com.example.android.thesis.vulnerableapp.ui.rule1.Rule1ViewModel;
 import com.example.android.thesis.vulnerableapp.ui.rule11.Rule11ViewModel;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Rule17Fragment extends Fragment {
 
@@ -131,7 +137,10 @@ public class Rule17Fragment extends Fragment {
         String[] splittedUri = uri.toString().split("/");
         String lastInsertedId = splittedUri[splittedUri.length - 1];
 
-        // Create a cursor which selects the last secret inserted
+        /* Create a cursor which selects the last secret inserted
+           https://developer.android.com/guide/topics/providers/content-provider-basics#ContentURIs
+           It specifies that we can access a single row in a table by appending an ID value to the end of the URI
+         */
         Cursor cursor = getContext().getContentResolver().query(
                 uri,
                 null,
@@ -151,15 +160,23 @@ public class Rule17Fragment extends Fragment {
         cursor.close();
     }
 
-
     public void onClickRetrieveSecrets(View view) {
         // Retrieve secrets
         String URL = "content://com.example.VulnerableApp.VulnerableProvider/secrets";
         Uri secrets = Uri.parse(URL);
 
         String[] projection = new String[]{VulnerableProvider.SECRET};
-//        Log.i("PROJECTION", Arrays.toString(projection));
-        Cursor cursor = getContext().getContentResolver().query(secrets, projection, null, null, null);
+//        String[] projection = { "tbl_name from sqlite_master;--" };
+
+//        String selection = "secret = 'alberto'";
+//        String selection = "1 = 1 UNION SELECT tbl_name FROM sqlite_master;--";
+        String selection = ((EditText) view.findViewById(R.id.et_rule17)).getText().toString();   // inject the query written in the EditText
+
+        String[] selectionArgs = null;
+//        String selection = "secret" + " = ?";   // prepared statement
+//        String[] selectionArgs = new String[]{((EditText) view.findViewById(R.id.et_rule17)).getText().toString()};     // inject the query written in the EditText, but now it is safe
+
+        Cursor cursor = getContext().getContentResolver().query(secrets, projection, selection, selectionArgs, null);
 
         String output = "";
         TextView queryOutput = view.findViewById(R.id.tv_query_result_rule17);
