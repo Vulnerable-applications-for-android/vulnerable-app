@@ -84,6 +84,12 @@
         tools:layout="@layout/fragment_rule19" />
 
     <fragment
+        android:id="@+id/nav_rule20"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule20.Rule20Fragment"
+        android:label="@string/menu_rule20"
+        tools:layout="@layout/fragment_rule20" />
+
+    <fragment
         android:id="@+id/nav_rule21"
         android:name="com.example.android.thesis.vulnerableapp.ui.rule21.Rule21Fragment"
         android:label="@string/menu_rule21"
