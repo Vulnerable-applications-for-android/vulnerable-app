@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.thesis.vulnerableapp">
+<!--    <permission android:name="test.permission" />-->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
@@ -32,7 +33,12 @@
         <provider
             android:name="VulnerableProvider"
             android:authorities="com.example.VulnerableApp.VulnerableProvider"
-            android:exported="true" />                      <!-- vulnerable to R2 -->
-<!--        should I set any <provider> permission?-->
+            android:exported="false" />                         <!-- vulnerable to R2 -->
+<!--            android:readPermission="test.permission" /> -->
+        
+        <service
+            android:name=".VulnerableService"
+            android:exported="true" >           <!-- vulnerable to R20 -->
+        </service>
     </application>
 </manifest>
