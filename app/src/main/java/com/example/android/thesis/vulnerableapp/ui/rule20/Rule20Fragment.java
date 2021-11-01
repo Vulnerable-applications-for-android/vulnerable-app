@@ -1,24 +1,17 @@
 package com.example.android.thesis.vulnerableapp.ui.rule20;
 
-import android.app.Activity;
-import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.android.thesis.vulnerableapp.MainActivity;
 import com.example.android.thesis.vulnerableapp.R;
 import com.example.android.thesis.vulnerableapp.VulnerableService;
 
