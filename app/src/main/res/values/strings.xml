@@ -31,6 +31,8 @@
     <string name="menu_rule21">R21: Use telephony networking</string>
     <string name="rule21_description">Apps should avoid sending sensitive data through the SMS protocol, since it is not encrypted. SMS is neither encrypted nor strongly authenticated, SMS messages are transmitted as broadcast intents, so they may be read or captured by other applications that have the READ_SMS permission.</string>
     <string name="vulnerability_rule21">"This app requests the READ_SMS, REQUEST_SMS, and SEND_SMS permissions. A normal app which requests this permission will probably read or send SMSes. This makes it vulnerable."</string>
+    <string name="menu_rule23">R23: Use Broadcast Receivers</string>
+    <string name="rule23_description"> By default, receivers are exported and can be invoked by any other application. If your BroadcastReceiver is intended for use by other applications, you may want to apply security permissions to receivers using the receiver element within the application manifest. This prevents applications without appropriate permissions from sending an intent to the BroadcastReceiver.</string>
     <string name="menu_rule25">R25: Common problems with Hostname Verification</string>
     <string name="rule25_description">Caution: replacing HostnameVerifier can be very dangerous if the other virtual host is not under your control, because a man-in-the-middle attack could direct traffic to another server without your knowledge</string>
     <string name="menu_rule26">R26: Warnings about using SSLSocket directly</string>

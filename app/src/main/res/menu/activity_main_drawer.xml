@@ -69,6 +69,11 @@
             android:title="@string/menu_rule21" />
 
         <item
+            android:id="@+id/nav_rule23"
+            android:icon="@drawable/ic_menu_pop_out"
+            android:title="@string/menu_rule23" />
+
+        <item
             android:id="@+id/nav_rule25"
             android:icon="@drawable/ic_menu_communication"
             android:title="@string/menu_rule25" />
