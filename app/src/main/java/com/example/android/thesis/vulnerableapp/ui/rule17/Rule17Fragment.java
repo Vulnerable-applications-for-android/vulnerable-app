@@ -4,14 +4,10 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -22,18 +18,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
-
 import com.example.android.thesis.vulnerableapp.R;
 import com.example.android.thesis.vulnerableapp.VulnerableProvider;
-import com.example.android.thesis.vulnerableapp.ui.rule1.Rule1ViewModel;
-import com.example.android.thesis.vulnerableapp.ui.rule11.Rule11ViewModel;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Rule17Fragment extends Fragment {
 
@@ -48,13 +37,13 @@ public class Rule17Fragment extends Fragment {
 
         // Hide keyboard when touching somewhere else
         root.findViewById(R.id.linearLayout_rule17_container).setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {   // when the finger is over the screen
-                v.performClick();
-                assert context != null;
-                assert activity != null;
-                InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-            }
+            v.performClick();
+            assert context != null;
+            assert activity != null;
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            View focusView = activity.getCurrentFocus();
+            if(focusView != null)
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
             return true;
         });
 

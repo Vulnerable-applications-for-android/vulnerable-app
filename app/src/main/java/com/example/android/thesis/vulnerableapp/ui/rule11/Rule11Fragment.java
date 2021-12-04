@@ -39,13 +39,13 @@ public class Rule11Fragment extends Fragment {
 
         // Hide keyboard when touching somewhere else
         root.findViewById(R.id.linearLayout_rule11_container).setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_UP) {   // when the finger is over the screen
-                v.performClick();
-                assert context != null;
-                assert activity != null;
-                InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-            }
+            v.performClick();
+            assert context != null;
+            assert activity != null;
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            View focusView = activity.getCurrentFocus();
+            if(focusView != null)
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
             return true;
         });
 
