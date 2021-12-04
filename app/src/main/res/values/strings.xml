@@ -14,6 +14,10 @@
     <string name="rule2_description">1. Two apps, under the control of the same developer and designed to share data, should declare signature-based permissions to protect their Content Provider\n2. The exported attribute of an app Content Provider should be set to false to prevent any data sharing</string>
     <string name="menu_rule5">R5: Use SSL traffic</string>
     <string name="rule5_description">Use SSL Traffic and manage unknown certificates</string>
+    <string name="menu_rule6">R6: Use HTML message channels</string>
+    <string name="rule6_description">Because WebView consumes web content that can include HTML and JavaScript, improper use can introduce common web security issues such as XSSs.</string>
+    <string name="menu_rule7">R7: Use WebView objects carefully</string>
+    <string name="rule7_description">Whenever possible, load only whitelisted content in WebView objects. In other words, the WebView objects in your app shouldn\'t allow users to navigate to sites that are outside of your control.</string>
     <string name="menu_rule8">R8: Store private data within internal storage</string>
     <string name="rule8_description">Apps should save their private data in the internal private app storage, which is sandboxed per app</string>
     <string name="menu_rule11">R11: Store only non-sensitive data in cache files</string>

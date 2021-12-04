@@ -48,6 +48,18 @@
         tools:layout="@layout/fragment_rule5" />
 
     <fragment
+        android:id="@+id/nav_rule6"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule6.Rule6Fragment"
+        android:label="@string/menu_rule6"
+        tools:layout="@layout/fragment_rule6" />
+
+    <fragment
+        android:id="@+id/nav_rule7"
+        android:name="com.example.android.thesis.vulnerableapp.ui.rule7.Rule7Fragment"
+        android:label="@string/menu_rule7"
+        tools:layout="@layout/fragment_rule7" />
+
+    <fragment
         android:id="@+id/nav_rule8"
         android:name="com.example.android.thesis.vulnerableapp.ui.rule8.Rule8Fragment"
         android:label="@string/menu_rule8"

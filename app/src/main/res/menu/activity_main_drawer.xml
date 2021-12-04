@@ -29,6 +29,16 @@
             android:title="@string/menu_rule5" />
 
         <item
+            android:id="@+id/nav_rule6"
+            android:icon="@drawable/ic_web"
+            android:title="@string/menu_rule6" />
+
+        <item
+            android:id="@+id/nav_rule7"
+            android:icon="@drawable/ic_web"
+            android:title="@string/menu_rule7" />
+
+        <item
             android:id="@+id/nav_rule8"
             android:icon="@drawable/ic_menu_save"
             android:title="@string/menu_rule8" />
