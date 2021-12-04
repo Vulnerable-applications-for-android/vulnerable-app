@@ -153,6 +153,7 @@ public class VulnerableProvider extends ContentProvider {
         /**
          * register to watch a content URI for changes
          */
+        assert cursor != null;
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
