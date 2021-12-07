@@ -2,28 +2,19 @@ package com.example.android.thesis.vulnerableapp.ui.rule5;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import android.widget.Toast;
-
 import com.example.android.thesis.vulnerableapp.R;
-import com.example.android.thesis.vulnerableapp.ui.rule17.Rule17ViewModel;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class Rule5Fragment extends Fragment {
