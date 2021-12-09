@@ -36,7 +36,7 @@
             android:layout_marginLeft="20dp"
             android:gravity="center_horizontal"
             android:textAlignment="center"
-            android:text="( Analogous to Rule20 )"
+            android:text="( Analogous to Rule18 )"
             android:textSize="18sp"
             android:textStyle="italic"/>
 
@@ -79,12 +79,11 @@
                     android:backgroundTint="@color/colorPrimary"
                     android:padding="10dp"
                     android:background="@color/colorPrimary"
-                    android:text="Open Facebook"
+                    android:text="Launch an Activity"
                     android:textColor="@color/White"
-                    android:textSize="16sp"
-                    />
+                    android:textSize="16sp" />
             </LinearLayout>
-        </LinearLayout>
 
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

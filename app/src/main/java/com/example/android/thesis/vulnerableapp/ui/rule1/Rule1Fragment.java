@@ -15,25 +15,22 @@ public class Rule1Fragment extends Fragment {
 
     private Rule1ViewModel rule1ViewModel;
 
-    private void sendIntent() {
-//        String uri = "https://www.facebook.com";
-//        String uri = "https://www.google.com";
-        String uri = "test://ss.ss";
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.putExtra("secret", "this is a big secret!");
-        intent.putExtra("login", "login");
-        intent.putExtra("password", "pass");
-        startActivity(intent);
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rule1ViewModel = new ViewModelProvider(this).get(Rule1ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule1, container, false);
 
+        // Launch an Activity using an implicit intent (and without using an app chooser)
         Button sendIntentButton = root.findViewById(R.id.button_rule1);
-        sendIntentButton.setOnClickListener(
-                view -> sendIntent()
-        );
+        sendIntentButton.setOnClickListener(v -> {
+//            String uri = "https://www.google.com";
+//            String uri = "test://ss.ss";
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);     // rule checked only with ACTION_SEND and ACTION_GET_CONTENT
+            sendIntent.putExtra("secret", "this is a big secret!");
+            sendIntent.putExtra("login", "login");
+            sendIntent.putExtra("password", "pass");
+            startActivity(sendIntent);      // vulnerable
+//            startActivity(Intent.createChooser(sendIntent, "Send it using: "));   // NOT vulnerable
+        });
 
         return root;
     }
