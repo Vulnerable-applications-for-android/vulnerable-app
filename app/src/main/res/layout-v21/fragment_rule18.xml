@@ -60,29 +60,44 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/rule18_container"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_marginHorizontal="25dp"-->
-<!--                android:clickable="true"-->
-<!--                android:focusable="true"-->
-<!--                android:focusableInTouchMode="true"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:orientation="vertical">-->
+            <LinearLayout
+                android:id="@+id/rule18_container_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="25dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
 
                 <Button
-                    android:id="@+id/button_rule18"
+                    android:id="@+id/button_activity_rule18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="Open Facebook"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Launch an Activity"
                     android:textColor="@color/White"
-                    android:textSize="16sp"
-                    />
-<!--            </LinearLayout>-->
-        </LinearLayout>
+                    android:textSize="16sp" />
 
+                <Button
+                    android:id="@+id/button_broadcast_rule18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Send a Broadcast"
+                    android:textColor="@color/White"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

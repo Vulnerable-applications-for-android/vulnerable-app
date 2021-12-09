@@ -25,29 +25,32 @@ public class Rule18Fragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_rule18, container, false);
 
         final Context context = this.getContext();
-        final Activity activity = getActivity();
 
-//        ComponentName cn = new ComponentName("com.example.implicit.intents.interception", "com.example.implicit.intents.interception.EvilActivity");
-
-//        Button sendIntentButton = root.findViewById(R.id.button_rule18);
-//        sendIntentButton.setOnClickListener(view -> {
-//            Intent intent = new Intent("com.victim.messenger.IN_APP_MESSAGE");
-//            intent.putExtra("from", "alberto");
-//            intent.putExtra("text", "Hello everyone!!");
-//            context.sendBroadcast(intent);
-//        });
-
-        Button sendIntentButton = root.findViewById(R.id.button_rule18);
-        sendIntentButton.setOnClickListener(view -> {
+        // Launch an Activity using an implicit intent
+        Button sendIntentActButton = root.findViewById(R.id.button_activity_rule18);
+        sendIntentActButton.setOnClickListener(view -> {
             String uri = "https://www.facebook.com";
-            Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-//            Intent sendIntent = new Intent("com.victim.ADD_CARD_ACTION");
-//            Intent sendIntent = new Intent();
-//            sendIntent.setComponent(cn);
+            Intent sendIntent = new Intent(Intent.ACTION_VIEW);   // with ACTION_VIEW, the browser is the default choice
             sendIntent.setDataAndType(Uri.parse(uri), "text/plain");
             sendIntent.putExtra("secret", "sensitive data");
+            startActivity(sendIntent);
+        });
+
+//        Button sendIntentActButton = root.findViewById(R.id.button_activity_rule18);
+//        sendIntentActButton.setOnClickListener(view -> {
+//            Intent sendIntent = new Intent("com.victim.ADD_CARD_ACTION");
+//            sendIntent.putExtra("secret", "ahahahahahahaahha");
+//            sendIntent.putExtra("wei", "alberto");
 //            startActivity(sendIntent);
-            startActivity(Intent.createChooser(sendIntent, "Send it using: "));
+//        });
+
+        // Send a broadcast using an implicit intent
+        Button sendIntentBroButton = root.findViewById(R.id.button_broadcast_rule18);
+        sendIntentBroButton.setOnClickListener(view -> {
+            Intent intent = new Intent("com.victim.messenger.IN_APP_MESSAGE");
+            intent.putExtra("from", "alberto");
+            intent.putExtra("text", "Hello everyone!!");
+            context.sendBroadcast(intent, "test.permission");
         });
 
         return root;
