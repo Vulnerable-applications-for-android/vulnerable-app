@@ -17,4 +17,12 @@
 <!--            <certificates src="user" />-->
 <!--        </trust-anchors>-->
 <!--    </domain-config>-->
+
+<!--    Vulnerable to R27-->
+<!--    <debug-overrides>-->
+<!--        <trust-anchors>-->
+<!--&lt;!&ndash;            <certificates src="@raw/debug_cas"/>&ndash;&gt;-->
+<!--            <certificates src="user" />-->
+<!--        </trust-anchors>-->
+<!--    </debug-overrides>-->
 </network-security-config>
