@@ -2,6 +2,7 @@ package com.example.android.thesis.vulnerableapp.ui.rule18;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,24 +28,21 @@ public class Rule18Fragment extends Fragment {
         // Launch an Activity using an implicit intent
         Button sendIntentActButton = root.findViewById(R.id.button_activity_rule18);
         sendIntentActButton.setOnClickListener(view -> {
-            String uri = "https://www.facebook.com";
-            Intent sendIntent = new Intent(Intent.ACTION_VIEW);   // with ACTION_VIEW, the browser is the default choice
-            sendIntent.setDataAndType(Uri.parse(uri), "text/plain");
-            sendIntent.putExtra("secret", "sensitive data");
-            startActivity(sendIntent);
-//            startActivity(Intent.createChooser(sendIntent, "Send it using: "));
-        });
-
-//        Button sendIntentActButton = root.findViewById(R.id.button_activity_rule18);
-//        sendIntentActButton.setOnClickListener(view -> {
-//            Intent sendIntent = new Intent("com.victim.ADD_CARD_ACTION");
-//            Bundle bundle = new Bundle();
-//            bundle.putString("login", "alberto");
-//            bundle.putString("password", "very_secret");
-//            sendIntent.putExtras(bundle);
-//            sendIntent.putExtra("laughing", "ahaahahahahha");
+            Intent sendIntent = new Intent("com.victim.ADD_CARD_ACTION"); // do NOT use standard actions such as ACTION_VIEW, ACTION_SEND, ...
+            Bundle bundle = new Bundle();
+            bundle.putString("login", "alberto");
+            bundle.putString("password", "very_secret");
+            sendIntent.putExtras(bundle);
+            sendIntent.putExtra("laughing", "ahaahahahahha");
 //            startActivity(sendIntent);
-//        });
+
+            // This allows to send the implicit intent without the selector
+            for(ResolveInfo info : context.getPackageManager().queryIntentActivities(sendIntent, 0)) {
+                sendIntent.setClassName(info.activityInfo.packageName, info.activityInfo.name);
+                startActivity(sendIntent);
+                return;
+            }
+        });
 
         // Send a broadcast using an implicit intent
         Button sendIntentBroButton = root.findViewById(R.id.button_broadcast_rule18);
