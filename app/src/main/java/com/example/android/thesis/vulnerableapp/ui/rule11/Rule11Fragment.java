@@ -26,7 +26,6 @@ public class Rule11Fragment extends Fragment {
     private Rule11ViewModel rule11ViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        rule11ViewModel = ViewModelProviders.of(this).get(Rule11ViewModel.class);
         rule11ViewModel = new ViewModelProvider(this).get(Rule11ViewModel.class);
         View root = inflater.inflate(R.layout.fragment_rule11, container, false);
 
