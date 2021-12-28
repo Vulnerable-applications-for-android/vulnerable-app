@@ -268,7 +268,7 @@ public class Rule8Fragment extends Fragment {
         final Activity activity = getActivity();
 
         // Hide keyboard when touching somewhere else
-        root.findViewById(R.id.linearLayout_rule9_container).setOnTouchListener((v, event) -> {
+        root.findViewById(R.id.linearLayout_rule8_container).setOnTouchListener((v, event) -> {
             v.performClick();
             assert context != null;
             assert activity != null;
