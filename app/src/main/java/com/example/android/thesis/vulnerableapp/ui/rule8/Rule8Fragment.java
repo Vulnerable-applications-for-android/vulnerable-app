@@ -252,11 +252,7 @@ public class Rule8Fragment extends Fragment {
                         Toast.LENGTH_SHORT).show();
                 Log.i("IOException", Objects.requireNonNull(e.getMessage()));
             }
-
         }
-
-
-
     }
 
 
