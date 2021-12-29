@@ -10,7 +10,7 @@ public class Rule12ViewModel extends ViewModel {
 
     public Rule12ViewModel() {
         mText = new MutableLiveData<>();
-//        mText.setValue("Apps should use the SharedPreferences only in MODE_PRIVATE to prevent other apps from accessing them");
+//        mText.setValue("This is Rule12 fragment");
     }
 
     public LiveData<String> getText() {

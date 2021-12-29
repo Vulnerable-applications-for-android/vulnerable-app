@@ -37,8 +37,7 @@ public class Rule12Fragment extends Fragment {
         Log.i("EditText", secret);
         editText.setText("");
         SharedPreferences sharedPreferences = this.getContext().getSharedPreferences("secretPreferences", Context.MODE_WORLD_READABLE);
-        SharedPreferences.Editor editor =
-                sharedPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("secret", secret);
         editor.apply();
 
@@ -75,8 +74,7 @@ public class Rule12Fragment extends Fragment {
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId== EditorInfo.IME_ACTION_DONE){
-                    //do something
+                if(actionId == EditorInfo.IME_ACTION_DONE){
 //                    Log.i("EditText from Submit", editText.getText().toString());
                     onSubmitPref(editText);
                 }
