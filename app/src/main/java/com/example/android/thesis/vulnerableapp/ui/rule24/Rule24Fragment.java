@@ -58,18 +58,6 @@ public class Rule24Fragment extends Fragment {
             }
         }
 
-        ///////////////////////
-        //// so dex DLC //
-        ///////////////////////
-
-
-//        final String FILENAME = "exec";
-//        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-//        File soFile = new File(folder, System.mapLibraryName(FILENAME));
-//        Log.i("PROVA", System.mapLibraryName(FILENAME));
-//
-//        System.load(soFile.getAbsolutePath());
-
         return root;
     }
 }
