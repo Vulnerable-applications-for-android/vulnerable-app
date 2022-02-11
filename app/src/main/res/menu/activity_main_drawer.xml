@@ -44,6 +44,11 @@
             android:title="@string/menu_rule8" />
 
         <item
+            android:id="@+id/nav_rule9"
+            android:icon="@drawable/ic_menu_pop_out"
+            android:title="@string/menu_rule9" />
+
+        <item
             android:id="@+id/nav_rule11"
             android:icon="@drawable/ic_menu_save"
             android:title="@string/menu_rule11" />
