@@ -10,7 +10,7 @@ public class Rule19ViewModel extends ViewModel {
 
     public Rule19ViewModel() {
         mText = new MutableLiveData<>();
-//        mText.setValue("This is Rule21 fragment");
+//        mText.setValue("This is Rule19 fragment");
     }
 
     public LiveData<String> getText() {

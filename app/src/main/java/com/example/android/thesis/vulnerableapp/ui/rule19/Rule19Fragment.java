@@ -1,6 +1,10 @@
 package com.example.android.thesis.vulnerableapp.ui.rule19;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 import androidx.lifecycle.ViewModelProvider;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,8 +25,8 @@ import java.net.Socket;
 
 public class Rule19Fragment extends Fragment {
 
-    int SERVER_PORT = 5000;
     String SERVER_IP = "127.0.0.1";
+    int SERVER_PORT = 8080;
     Thread Thread1 = null;
     EditText etIP, etPort;
     TextView tvMessages;
@@ -37,29 +42,41 @@ public class Rule19Fragment extends Fragment {
         rule19ViewModel = new ViewModelProvider(this).get(Rule19ViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_rule19, container, false);
 
+        final Context context = this.getContext();
+        final Activity activity = getActivity();
+
+        // Hide keyboard when touching somewhere else
+        root.findViewById(R.id.linearLayout_rule19_container).setOnTouchListener((v, event) -> {
+            v.performClick();
+            assert context != null;
+            assert activity != null;
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+            View focusView = activity.getCurrentFocus();
+            if(focusView != null)
+                imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
+            return true;
+        });
+
         try {
-            etIP = root.findViewById(R.id.etIP);
+            etIP = root.findViewById(R.id.etIP);      // uncomment these for custom ip_address:port
             etPort = root.findViewById(R.id.etPort);
             tvMessages = root.findViewById(R.id.tvMessages);
             etMessage = root.findViewById(R.id.etMessage);
-            btnSend = root.findViewById(R.id.btnSend);
             btnConnect = root.findViewById(R.id.btnConnect);
+            btnSend = root.findViewById(R.id.btnSend);
 
-            btnConnect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    tvMessages.setText("");
-                    SERVER_IP = etIP.getText().toString().trim();
-                    SERVER_PORT = Integer.parseInt(etPort.getText().toString().trim());
-                    Thread1 = new Thread(new Thread1());
-                    Thread1.start();
-                }
+            btnConnect.setOnClickListener(v -> {
+                tvMessages.setText("");
+                SERVER_IP = etIP.getText().toString().trim();         // uncomment these for custom ip_address:port
+                SERVER_PORT = Integer.parseInt(etPort.getText().toString().trim());
+                Thread1 = new Thread(new Thread1());
+                Thread1.start();
             });
+
             btnSend.setOnClickListener(v -> {
                 String message = etMessage.getText().toString().trim();
-                if (!message.isEmpty()) {
+                if (!message.isEmpty())
                     new Thread(new Thread3(message)).start();
-                }
             });
         } catch (Exception e) {
             Log.e("çççç", e.getMessage());
@@ -74,12 +91,7 @@ public class Rule19Fragment extends Fragment {
                 socket = new Socket(SERVER_IP, SERVER_PORT);
                 output = new PrintWriter(socket.getOutputStream());
                 input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvMessages.setText("Connected\n");
-                    }
-                });
+                getActivity().runOnUiThread(() -> tvMessages.setText("Connected\n"));
                 new Thread(new Thread2()).start();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -93,14 +105,9 @@ public class Rule19Fragment extends Fragment {
             while (true) {
                 try {
                     final String message = input.readLine();
-                    if (message != null) {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                tvMessages.append("server: " + message + "\n");
-                            }
-                        });
-                    } else {
+                    if (message != null)
+                        getActivity().runOnUiThread(() -> tvMessages.append("server: " + message + "\n"));
+                    else {
                         Thread1 = new Thread(new Thread1());
                         Thread1.start();
                         return;
@@ -114,7 +121,6 @@ public class Rule19Fragment extends Fragment {
 
     class Thread3 implements Runnable {
         private final String message;
-
         Thread3(String message) {
             this.message = message;
         }
@@ -123,12 +129,9 @@ public class Rule19Fragment extends Fragment {
         public void run() {
             output.write(message + "\n");
             output.flush();
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    tvMessages.append("client: " + message + "\n");
-                    etMessage.setText("");
-                }
+            getActivity().runOnUiThread(() -> {
+                tvMessages.append("client: " + message + "\n");
+                etMessage.setText("");
             });
         }
     }

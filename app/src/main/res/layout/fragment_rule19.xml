@@ -52,14 +52,14 @@
                 android:id = "@+id/etIP"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
-                android:hint = "@string/ip_address"
+                android:hint = "Default: 127.0.0.1"
                 android:inputType = "text" />
             <EditText
                 android:id = "@+id/etPort"
                 android:layout_width = "match_parent"
                 android:layout_height = "wrap_content"
                 android:layout_below = "@+id/etIP"
-                android:hint = "@string/port_no"
+                android:hint = "Default: 8080"
                 android:inputType = "number" />
             <Button
                 android:id = "@+id/btnConnect"
