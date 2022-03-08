@@ -11,11 +11,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.text.TextUtils;
-import java.util.HashMap;
 
 public class VulnerableProvider extends ContentProvider {
-    static final String PROVIDER_NAME = "com.example.VulnerableApp.VulnerableProvider";
-    static final String URL = "content://" + PROVIDER_NAME + "/secrets";
+    static final String AUTHORITY_NAME = "com.example.VulnerableApp.VulnerableProvider"; // define same string in the manifest
+    static final String SECRETS_TABLE_NAME = "secrets";
+    static final String URL = "content://" + AUTHORITY_NAME + "/" + SECRETS_TABLE_NAME;
     public static final Uri CONTENT_URI = Uri.parse(URL);
 
     // Those are the two columns of the table "secrets"
@@ -25,27 +25,23 @@ public class VulnerableProvider extends ContentProvider {
     static final int SECRETS = 1;
     static final int SECRET_ID = 2;
 
-    private static HashMap<String, String> SECRETS_PROJECTION_MAP;
+    static final UriMatcher uriMatcher;
+    static {
+        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+        uriMatcher.addURI(AUTHORITY_NAME, "secrets", SECRETS);
+        uriMatcher.addURI(AUTHORITY_NAME, "secrets/#", SECRET_ID);
+    }
 
     /**
      * Database specific constant declarations
      */
     private SQLiteDatabase db;
     static final String DATABASE_NAME = "VulnerableDB";
-    static final String SECRETS_TABLE_NAME = "secrets";
     static final int DATABASE_VERSION = 1;
 
     // We will create a DB with one table: "secrets"
     // This table will contain two columns: "_id" and "secret"
     static final String CREATE_DB_TABLE = " CREATE TABLE " + SECRETS_TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " + " secret TEXT NOT NULL); ";
-
-    static final UriMatcher uriMatcher;
-
-    static {
-        uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(PROVIDER_NAME, "secrets", SECRETS);
-        uriMatcher.addURI(PROVIDER_NAME, "secrets/#", SECRET_ID);
-    }
 
 
     /**
