@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.android.thesis.vulnerableapp"
-        minSdkVersion 19
+        minSdkVersion 21
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 29
         versionCode 1
